@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Kosury Beauty | Centro de Estética Profesional y Coach Nutricional</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&amp;family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#C5A89B", // Rosa viejo / Nude apagado
+                        "primary-container": "#D4AF37", // Dorado sutil
+                        "on-primary-container": "#2D2B2A", // Texto oscuro
+                        "surface": "#FAF6F0", // Blanco roto / beige arena suave
+                        "background": "#FAF6F0",
+                        "on-surface": "#2D2B2A", // Gris casi negro
+                        "on-surface-variant": "#5C5652", // Gris medio suave para subtítulos
+                        "outline-variant": "#C5A89B", // Bordes elegantes de color acento
+                        "surface-container": "#F5EFE6", // Fondo alternativo ligeramente más oscuro
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0",
+                        "lg": "8px",
+                        "xl": "12px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "32px",
+                        "unit": "8px",
+                        "margin-desktop": "80px",
+                        "section-gap": "120px",
+                        "margin-mobile": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "label-sm": ["Inter", "sans-serif"],
+                        "headline-sm": ["EB Garamond", "serif"],
+                        "headline-lg": ["EB Garamond", "serif"],
+                        "display-lg": ["EB Garamond", "serif"],
+                        "label-lg": ["Inter", "sans-serif"],
+                        "headline-md": ["EB Garamond", "serif"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "300"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "300"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "400"}],
+                        "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                        "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-watermark {
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 10c22.09 0 40 17.91 40 40s-17.91 40-40 40S10 72.09 10 50 27.91 10 50 10zm0 2c-20.987 0-38 17.013-38 38s17.013 38 38 38 38-17.013 38-38-17.013-38-38-38z' fill='%23C5A89B' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            background-size: 800px;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Transición de tabs suave */
+        .services-group {
+            transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container">
+
+<!-- Contenedor Fijo Superior del NavBar (Evita cortes y descentrado en pantallas grandes y móviles) -->
+<div class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-transparent" id="nav-container">
+    <nav class="flex justify-between items-center px-6 md:px-margin-desktop py-6 md:py-8 max-w-[1440px] mx-auto w-full" id="main-nav">
+        <div class="flex items-center">
+            <!-- Logotipo circular base.png con fondo/borde verde claro para corregir bordes -->
+            <div class="h-12 w-12 rounded-full overflow-hidden border border-[#C8DFD8] bg-[#EAF2EF] flex items-center justify-center mr-3 shadow-sm">
+                <img alt="Kosury Beauty Logo" class="h-full w-full object-cover" src="base.png" onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/aida-public/AB6AXuCMgY7Nlr5skn4EMAecXM0mNnGcddYvjEsFojPMOUJV33HrvaaceJSYSF-9O5j4_UhGcvqGSpKuAS-M9lxiOpU_-VRkqiNe72wVw7JvO50t0y3VM-0crCLbaYBQswF6ZqzfhS2YTIXYjfDo137uTFiGb98e34WQhhCfWMyVu7R-MZilLgQTyEG18reLObp6ZgUlf3xeZn4jf2Rf863_hsXVwNBdPw0v2AW0JkL822ePaQq8P4BP57qcL4g4WPdn-qXZJsdvTxLDjpA'"/>
+            </div>
+            <span class="font-headline-sm text-headline-sm text-primary tracking-widest uppercase hidden sm:block">Kosury Beauty</span>
+        </div>
+        <div class="hidden md:flex items-center space-x-12">
+            <a class="font-label-lg text-label-lg uppercase text-on-surface-variant hover:text-primary transition-colors duration-300" href="#servicios">Servicios</a>
+            <a class="font-label-lg text-label-lg uppercase text-on-surface-variant hover:text-primary transition-colors duration-300" href="#sobre-daniela">Sobre Daniela</a>
+            <a class="font-label-lg text-label-lg uppercase text-on-surface-variant hover:text-primary transition-colors duration-300" href="#boutique">Boutique</a>
+            <a class="font-label-lg text-label-lg uppercase text-on-surface-variant hover:text-primary transition-colors duration-300" href="#resultados">Resultados</a>
+            <a class="font-label-lg text-label-lg uppercase text-on-surface-variant hover:text-primary transition-colors duration-300" href="#contacto">Contacto</a>
+        </div>
+        <a href="https://booksy.com" target="_blank" class="hidden md:block px-8 py-3 border border-primary text-on-surface font-label-lg text-label-lg uppercase hover:bg-primary hover:text-white transition-all duration-300">
+            Reservar Cita
+        </a>
+        <button class="md:hidden text-primary focus:outline-none" id="mobile-menu-btn">
+            <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
+    </nav>
+</div>
+
+<!-- Menú Móvil Desplegable -->
+<div class="fixed inset-0 bg-surface/98 z-40 hidden flex-col justify-center items-center space-y-8 transition-all duration-300 ease-in-out md:hidden" id="mobile-menu">
+    <button class="absolute top-8 right-8 text-primary focus:outline-none" id="mobile-menu-close">
+        <span class="material-symbols-outlined text-4xl">close</span>
+    </button>
+    <a class="font-headline-md text-3xl text-on-surface hover:text-primary transition-colors" href="#servicios" onclick="toggleMobileMenu()">Servicios</a>
+    <a class="font-headline-md text-3xl text-on-surface hover:text-primary transition-colors" href="#sobre-daniela" onclick="toggleMobileMenu()">Sobre Daniela</a>
+    <a class="font-headline-md text-3xl text-on-surface hover:text-primary transition-colors" href="#boutique" onclick="toggleMobileMenu()">Boutique</a>
+    <a class="font-headline-md text-3xl text-on-surface hover:text-primary transition-colors" href="#resultados" onclick="toggleMobileMenu()">Resultados</a>
+    <a class="font-headline-md text-3xl text-on-surface hover:text-primary transition-colors" href="#contacto" onclick="toggleMobileMenu()">Contacto</a>
+    <a href="https://booksy.com" target="_blank" class="px-10 py-4 bg-primary text-white font-label-lg text-label-lg uppercase hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 shadow-md">
+        Reservar Cita
+    </a>
+</div>
+
+<main class="pt-[140px]">
+    <!-- Hero Section con Fallback de Imagen Robusta para evitar urls rotas -->
+    <section class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop min-h-[80vh] flex items-center mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter w-full">
+            <div class="md:col-span-6 flex flex-col justify-center order-2 md:order-1 pt-12 md:pt-0">
+                <h1 class="font-display-lg text-display-lg text-on-surface mb-8 leading-tight">
+                    Cuida tu piel, nutre tu cuerpo y conecta con tu mejor versión.
+                </h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant mb-12 max-w-md">
+                    Centro de estética profesional y asesoría nutricional en un ambiente diseñado exclusivamente para ti.
+                </p>
+                <div>
+                    <a href="https://booksy.com" target="_blank" class="inline-block px-10 py-4 bg-primary text-white font-label-lg text-label-lg uppercase transition-all duration-300 hover:bg-primary-container hover:text-on-primary-container border border-transparent shadow-sm">
+                        Reservar Cita en Booksy
+                    </a>
+                </div>
+            </div>
+            <div class="md:col-span-6 order-1 md:order-2">
+                <div class="relative h-[550px] w-full border border-primary p-2">
+                    <img alt="Estudio de Estética Kosury Beauty" class="w-full h-full object-cover" src="daniela-estetica-home-hero-banner.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1600334129128-685c5582fd35?q=80&w=1200&auto=format&fit=crop'"/>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner de Promociones Dinámicas -->
+    <section class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop mb-24">
+        <div class="bg-surface-container border border-primary/30 p-6 md:p-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-4 text-center md:text-left">
+                <span class="material-symbols-outlined text-primary-container text-4xl hidden md:block">stars</span>
+                <div>
+                    <h4 class="font-label-lg text-label-lg uppercase text-primary tracking-wider font-semibold">¡Promoción del Mes! 🌟</h4>
+                    <p class="font-body-md text-body-md text-on-surface-variant mt-1">Disfruta de nuestro 2+1 en tratamientos faciales seleccionados. Solo este mes.</p>
+                </div>
+            </div>
+            <a href="https://booksy.com" target="_blank" class="px-8 py-3 bg-primary text-white font-label-lg text-label-lg uppercase hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 whitespace-nowrap shadow-sm">
+                Aprovechar Oferta
+            </a>
+        </div>
+    </section>
+
+    <!-- Catálogo de Servicios (Grid con Tabs) -->
+    <section id="servicios" class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop mb-section-gap">
+        <div class="mb-12 flex justify-between items-end border-b border-outline-variant pb-6">
+            <h2 class="font-headline-lg text-headline-lg text-on-surface">Catálogo de Servicios</h2>
+            <span class="font-label-lg text-label-lg uppercase text-primary flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary text-2xl hidden md:inline-block">spa</span>
+                Nuestro Menú
+            </span>
+        </div>
+
+        <!-- Tabs de Categorías -->
+        <div class="flex flex-wrap justify-center gap-2 md:gap-6 mb-12 border-b border-outline-variant/30 pb-4">
+            <button onclick="switchCategory('manicura-pedicura')" id="tab-manicura-pedicura" class="category-tab font-label-lg text-label-lg uppercase text-primary border-b-2 border-primary pb-2 px-4 transition-all duration-300 flex items-center gap-2">
+                <span>🌸 Manicura & Pedicura</span>
+            </button>
+            <button onclick="switchCategory('masajes')" id="tab-masajes" class="category-tab font-label-lg text-label-lg uppercase text-on-surface-variant hover:text-primary pb-2 px-4 transition-all duration-300 flex items-center gap-2">
+                <span>💆‍♀️ Masajes</span>
+            </button>
+            <button onclick="switchCategory('facial')" id="tab-facial" class="category-tab font-label-lg text-label-lg uppercase text-on-surface-variant hover:text-primary pb-2 px-4 transition-all duration-300 flex items-center gap-2">
+                <span>✨ Cuidado Facial & Mirada</span>
+            </button>
+            <button onclick="switchCategory('nutricion')" id="tab-nutricion" class="category-tab font-label-lg text-label-lg uppercase text-on-surface-variant hover:text-primary pb-2 px-4 transition-all duration-300 flex items-center gap-2">
+                <span>💫 Coach Nutricional</span>
+            </button>
+        </div>
+
+        <!-- Contenedores de Servicios -->
+        
+        <!-- Categoría 1: Manicura & Pedicura -->
+        <div id="cat-manicura-pedicura" class="services-group grid grid-cols-1 md:grid-cols-12 gap-gutter transition-all duration-300 transform scale-100 opacity-100">
+            <!-- Servicio 1 -->
+            <div class="md:col-span-4 group cursor-pointer flex flex-col justify-between border border-primary/20 p-4 hover:border-primary transition-all duration-300">
+                <div>
+                    <div class="relative h-[300px] mb-6 overflow-hidden border border-primary/10">
+                        <div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
+                        <img alt="Manicura Combinada / Semi permanente" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=600&auto=format&fit=crop"/>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Duración: 60 min</span>
+                        <span class="font-label-lg text-label-lg font-semibold text-primary">€25</span>
+                    </div>
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface mb-6">Manicura Combinada / Semi permanente</h3>
+                </div>
+                <a href="https://booksy.com" target="_blank" class="w-full text-center py-3 border border-primary text-on-surface font-label-lg text-label-lg uppercase hover:bg-primary hover:text-white transition-all duration-300">
+                    Reservar Cita
+                </a>
+            </div>
+            <!-- Servicio 2 (Pedicura Spa) con fallback robusto -->
+            <div class="md:col-span-4 group cursor-pointer flex flex-col justify-between border border-primary/20 p-4 hover:border-primary transition-all duration-300">
+                <div>
+                    <div class="relative h-[300px] mb-6 overflow-hidden border border-primary/10">
+                        <div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
+                        <img alt="Pedicura Completa Spa" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" src="daniela-estetica-pedicura-spa-relajante.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519415510236-855946de155e?q=80&w=600&auto=format&fit=crop'"/>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Duración: 50 min</span>
+                        <span class="font-label-lg text-label-lg font-semibold text-primary">€35</span>
+                    </div>
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface mb-6">Pedicura Completa Spa Relajante</h3>
+                </div>
+                <a href="https://booksy.com" target="_blank" class="w-full text-center py-3 border border-primary text-on-surface font-label-lg text-label-lg uppercase hover:bg-primary hover:text-white transition-all duration-300">
+                    Reservar Cita
+                </a>
+            </div>
+            <!-- Servicio 3 -->
+            <div class="md:col-span-4 group cursor-pointer flex flex-col justify-between border border-primary/20 p-4 hover:border-primary transition-all duration-300">
+                <div>
+                    <div class="relative h-[300px] mb-6 overflow-hidden border border-primary/10">
+                        <div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
+                        <img alt="Extensión de Uñas" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" src="https://images.unsplash.com/photo-1632345031435-8797b2d58045?q=80&w=600&auto=format&fit=crop"/>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Duración: 90 min</span>
+                        <span class="font-label-lg text-label-lg font-semibold text-primary">€50</span>
+                    </div>
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface mb-6">Extensión de Uñas (Gel/Acrílico)</h3>
+                </div>
+                <a href="https://booksy.com" target="_blank" class="w-full text-center py-3 border border-primary text-on-surface font-label-lg text-label-lg uppercase hover:bg-primary hover:text-white transition-all duration-300">
+                    Reservar Cita
+                </a>
+            </div>
+        </div>
+
+        <!-- Categoría 2: Masajes -->
+        <div id="cat-masajes" class="services-group grid grid-cols-1 md:grid-cols-12 gap-gutter transition-all duration-300 transform scale-95 opacity-0 hidden">
+            <!-- Servicio 1 -->
+            <div class="md:col-span-4 group cursor-pointer flex flex-col justify-between border border-primary/20 p-4 hover:border-primary transition-all duration-300">
+                <div>
+                    <div class="relative h-[300px] mb-6 overflow-hidden border border-primary/10">
+                        <div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
+                        <img alt="Masaje Relajante" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=600&auto=format&fit=crop"/>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Duración: 60 min</span>
+                        <span class="font-label-lg text-label-lg font-semibold text-primary">€45</span>
+                    </div>
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface mb-6">Masaje Relajante con Aceites Esenciales</h3>
+                </div>
+                <a href="https://booksy.com" target="_blank" class="w-full text-center py-3 border border-primary text-on-surface font-label-lg text-label-lg uppercase hover:bg-primary hover:text-white transition-all duration-300">
+                    Reservar Cita
+                </a>
+            </div>
+            <!-- Servicio 2 -->
+            <div class="md:col-span-4 group cursor-pointer flex flex-col justify-between border border-primary/20 p-4 hover:border-primary transition-all duration-300">
+                <div>
+                    <div class="relative h-[300px] mb-6 overflow-hidden border border-primary/10">
+                        <div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
+                        <img alt="Masaje Descontracturante" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=80&w=600&auto=format&fit=crop"/>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Duración: 45 min</span>
+                        <span class="font-label-lg text-label-lg font-semibold text-primary">€40</span>
+                    </div>
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface mb-6">Masaje Descontracturante / Descarga</h3>
+                </div>
+                <a href="https://booksy.com" target="_blank" class="w-full text-center py-3 border border-primary text-on-surface font-label-lg text-label-lg uppercase hover:bg-primary hover:text-white transition-all duration-300">
+                    Reservar Cita
+                </a>
+            </div>
+            <!-- Servicio 3 -->
+            <div class="md:col-span-4 group cursor-pointer flex flex-col justify-between border border-primary/20 p-4 hover:border-primary transition-all duration-300">
+                <div>
+                    <div class="relative h-[300px] mb-6 overflow-hidden border border-primary/10">
+                        <div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
+                        <img alt="Drenaje Linfático" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=600&auto=format&fit=crop"/>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Duración: 60 min</span>
+                        <span class="font-label-lg text-label-lg font-semibold text-primary">€55</span>
+                    </div>
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface mb-6">Drenaje Linfático</h3>
+                </div>
+                <a href="https://booksy.com" target="_blank" class="w-full text-center py-3 border border-primary text-on-surface font-label-lg text-label-lg uppercase hover:bg-primary hover:text-white transition-all duration-300">
+                    Reservar Cita
+                </a>
+            </div>
+        </div>
+
+        <!-- Categoría 3: Cuidado Facial & Mirada -->
+        <div id="cat-facial" class="services-group grid grid-cols-1 md:grid-cols-12 gap-gutter transition-all duration-300 transform scale-95 opacity-0 hidden">
+            <!-- Servicio 1 -->
+            <div class="md:col-span-3 group cursor-pointer flex flex-col justify-between border border-primary/20 p-4 hover:border-primary transition-all duration-300">
+                <div>
+                    <div class="relative h-[250px] mb-6 overflow-hidden border border-primary/10">
+                        <div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
+                        <img alt="Limpieza Facial" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=600&auto=format&fit=crop"/>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Duración: 75 min</span>
+                        <span class="font-label-lg text-label-lg font-semibold text-primary">€50</span>
+                    </div>
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface mb-6">Limpieza Facial Profunda</h3>
+                </div>
+                <a href="https://booksy.com" target="_blank" class="w-full text-center py-3 border border-primary text-on-surface font-label-lg text-label-lg uppercase hover:bg-primary hover:text-white transition-all duration-300">
+                    Reservar Cita
+                </a>
+            </div>
+            <!-- Servicio 2 -->
+            <div class="md:col-span-3 group cursor-pointer flex flex-col justify-between border border-primary/20 p-4 hover:border-primary transition-all duration-300">
+                <div>
+                    <div class="relative h-[250px] mb-6 overflow-hidden border border-primary/10">
+                        <div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
+                        <img alt="Tratamiento Glow Vitamina C" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=600&auto=format&fit=crop"/>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Duración: 60 min</span>
+                        <span class="font-label-lg text-label-lg font-semibold text-primary">€45</span>
+                    </div>
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface mb-6">Tratamiento Glow / Vitamina C</h3>
+                </div>
+                <a href="https://booksy.com" target="_blank" class="w-full text-center py-3 border border-primary text-on-surface font-label-lg text-label-lg uppercase hover:bg-primary hover:text-white transition-all duration-300">
+                    Reservar Cita
+                </a>
+            </div>
+            <!-- Servicio 3 -->
+            <div class="md:col-span-3 group cursor-pointer flex flex-col justify-between border border-primary/20 p-4 hover:border-primary transition-all duration-300">
+                <div>
+                    <div class="relative h-[250px] mb-6 overflow-hidden border border-primary/10">
+                        <div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
+                        <img alt="Peeling Químico" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=80&w=600&auto=format&fit=crop"/>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Duración: 45 min</span>
+                        <span class="font-label-lg text-label-lg font-semibold text-primary">€60</span>
+                    </div>
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface mb-6">Peeling Químico Celular</h3>
+                </div>
+                <a href="https://booksy.com" target="_blank" class="w-full text-center py-3 border border-primary text-on-surface font-label-lg text-label-lg uppercase hover:bg-primary hover:text-white transition-all duration-300">
+                    Reservar Cita
+                </a>
+            </div>
+            <!-- Servicio 4 (Lifting/Extensiones con fallback e interactividad) -->
+            <div class="md:col-span-3 group cursor-pointer flex flex-col justify-between border border-primary/20 p-4 hover:border-primary transition-all duration-300">
+                <div>
+                    <div class="relative h-[250px] mb-6 overflow-hidden border border-primary/10 bg-black/5">
+                        <div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
+                        <video class="w-full h-full object-cover absolute inset-0 hidden group-hover:block animate-fade-in" autoplay loop muted playsinline poster="daniela-estetica-pestanas-pelo-a-pelo.jpg">
+                            <source src="daniela-cosmetica-textura-crema-serum.mp4" type="video/mp4">
+                        </video>
+                        <img alt="Extensiones de pestañas pelo a pelo" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" src="daniela-estetica-pestanas-pelo-a-pelo.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=600&auto=format&fit=crop'"/>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Duración: 60 min</span>
+                        <span class="font-label-lg text-label-lg font-semibold text-primary">€45</span>
+                    </div>
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface mb-6">Extensiones & Lifting de Pestañas</h3>
+                </div>
+                <a href="https://booksy.com" target="_blank" class="w-full text-center py-3 border border-primary text-on-surface font-label-lg text-label-lg uppercase hover:bg-primary hover:text-white transition-all duration-300">
+                    Reservar Cita
+                </a>
+            </div>
+        </div>
+
+        <!-- Categoría 4: Coach Nutricional -->
+        <div id="cat-nutricion" class="services-group grid grid-cols-1 md:grid-cols-12 gap-gutter transition-all duration-300 transform scale-95 opacity-0 hidden">
+            <!-- Servicio 1 (Coach Nutricional con fallback) -->
+            <div class="md:col-span-4 group cursor-pointer flex flex-col justify-between border border-primary/20 p-4 hover:border-primary transition-all duration-300">
+                <div>
+                    <div class="relative h-[300px] mb-6 overflow-hidden border border-primary/10">
+                        <div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
+                        <img alt="Valoración Nutricional" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" src="daniela-coach-nutricional-salud-bienestar.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=600&auto=format&fit=crop'"/>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Duración: 60 min</span>
+                        <span class="font-label-lg text-label-lg font-semibold text-primary">€60</span>
+                    </div>
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface mb-6">Valoración Nutricional Integral</h3>
+                </div>
+                <a href="https://booksy.com" target="_blank" class="w-full text-center py-3 border border-primary text-on-surface font-label-lg text-label-lg uppercase hover:bg-primary hover:text-white transition-all duration-300">
+                    Reservar Cita
+                </a>
+            </div>
+            <!-- Servicio 2 -->
+            <div class="md:col-span-4 group cursor-pointer flex flex-col justify-between border border-primary/20 p-4 hover:border-primary transition-all duration-300">
+                <div>
+                    <div class="relative h-[300px] mb-6 overflow-hidden border border-primary/10">
+                        <div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
+                        <img alt="Seguimiento Nutricional" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?q=80&w=600&auto=format&fit=crop"/>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Duración: 45 min</span>
+                        <span class="font-label-lg text-label-lg font-semibold text-primary">€35</span>
+                    </div>
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface mb-6">Sesión de Seguimiento + Menú</h3>
+                </div>
+                <a href="https://booksy.com" target="_blank" class="w-full text-center py-3 border border-primary text-on-surface font-label-lg text-label-lg uppercase hover:bg-primary hover:text-white transition-all duration-300">
+                    Reservar Cita
+                </a>
+            </div>
+            <!-- Servicio 3 -->
+            <div class="md:col-span-4 group cursor-pointer flex flex-col justify-between border border-primary/20 p-4 hover:border-primary transition-all duration-300">
+                <div>
+                    <div class="relative h-[300px] mb-6 overflow-hidden border border-primary/10">
+                        <div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"></div>
+                        <img alt="Pack Bienestar Integral" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop"/>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Plan Especial</span>
+                        <span class="font-label-lg text-label-lg font-semibold text-primary">€90</span>
+                    </div>
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface mb-6">Pack Bienestar Integral (Cuerpo + Nutrición)</h3>
+                </div>
+                <a href="https://booksy.com" target="_blank" class="w-full text-center py-3 border border-primary text-on-surface font-label-lg text-label-lg uppercase hover:bg-primary hover:text-white transition-all duration-300">
+                    Reservar Cita
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Sobre Daniela (Marca Personal con video y fallbacks robustos) -->
+    <section id="sobre-daniela" class="w-full bg-surface-container py-24 px-margin-mobile md:px-margin-desktop mb-section-gap relative overflow-hidden">
+        <div class="absolute inset-0 bg-watermark opacity-20 pointer-events-none"></div>
+        <div class="max-w-[1440px] mx-auto relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center mb-20">
+                <!-- Vídeo de Bienvenida en Bucle con poster de Unsplash estético directo -->
+                <div class="md:col-span-5 relative h-[480px] border border-primary p-2 overflow-hidden bg-black/5">
+                    <video class="w-full h-full object-cover" autoplay loop muted playsinline poster="daniela.png">
+                        <source src="daniela-presentacion-esteticista-profesional.mp4" type="video/mp4">
+                        <!-- Imagen de respaldo -->
+                        <img alt="Daniela - Esteticista Profesional" class="w-full h-full object-cover" src="daniela.png"/>
+                    </video>
+                </div>
+                <div class="md:col-span-7 flex flex-col justify-center font-sans">
+                    <span class="font-label-lg text-label-lg uppercase text-primary tracking-widest block mb-4 font-medium">Marca Personal</span>
+                    <h2 class="font-display-lg text-display-lg text-on-surface mb-8">Sobre Daniela</h2>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed max-w-2xl">
+                        "¡Hola! Soy Daniela, el alma detrás de Kosury Beauty. Creo firmemente que la belleza real es el resultado de un equilibrio entre cómo nos cuidamos por fuera y cómo nos nutrimos por dentro. Por eso, he creado este espacio: para ofrecerte no solo tratamientos estéticos de vanguardia y cuidado de la piel, sino también un acompañamiento nutricional que te haga sentir radiante, saludable y llena de buena vibra. Mi objetivo es que cada visita sea tu momento favorito del día."
+                    </p>
+                </div>
+            </div>
+
+            <!-- Pilares del estudio -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-left border-t border-outline-variant/30 pt-12">
+                <div>
+                    <span class="material-symbols-outlined text-primary mb-4 text-3xl">spa</span>
+                    <h4 class="font-headline-sm text-headline-sm text-on-surface mb-3">Belleza Consciente</h4>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Tratamientos estéticos avanzados y respetuosos con tu piel, enfocados en resaltar tu belleza natural sin artificios.</p>
+                </div>
+                <div>
+                    <span class="material-symbols-outlined text-primary mb-4 text-3xl">restaurant_menu</span>
+                    <h4 class="font-headline-sm text-headline-sm text-on-surface mb-3">Nutrición de Adentro Hacia Afuera</h4>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Planes nutricionales integrales que alimentan tu cuerpo, mejoran tu salud y te aportan una energía y bienestar inigualables.</p>
+                </div>
+                <div>
+                    <span class="material-symbols-outlined text-primary mb-4 text-3xl">self_improvement</span>
+                    <h4 class="font-headline-sm text-headline-sm text-on-surface mb-3">Sanación & Relax</h4>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Tu refugio de bienestar personal donde podrás disfrutar de un espacio tranquilo, relajarte y conectar contigo misma.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Ropa Deportiva / Corner de Moda con fallback -->
+    <section id="boutique" class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop mb-section-gap">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+            <div class="md:col-span-6 order-2 md:order-1">
+                <div class="relative h-[480px] border border-primary p-2">
+                    <img alt="Expositor de ropa deportiva fitness Kosury Boutique" class="w-full h-full object-cover" src="daniela-boutique-ropa-deportiva-fitness.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=600&auto=format&fit=crop'"/>
+                </div>
+            </div>
+            <div class="md:col-span-6 flex flex-col justify-center order-1 md:order-2">
+                <span class="font-label-lg text-label-lg uppercase text-primary tracking-widest block mb-4">Corner de Moda</span>
+                <h2 class="font-headline-lg text-headline-lg text-on-surface mb-8">Kosury Boutique</h2>
+                <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed max-w-md mb-8">
+                    Unimos belleza, salud y moda en un solo lugar. Descubre nuestra cuidada selección de ropa deportiva de alta calidad, con conjuntos diseñados para tu comodidad y estilo diario en hermosos colores neutros y pasteles.
+                </p>
+                <div>
+                    <a href="#contacto" class="inline-block px-8 py-3 border border-primary text-on-surface font-label-lg text-label-lg uppercase hover:bg-primary hover:text-white transition-all duration-300">
+                        Ver Colección en el Salón
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería de Resultados (Prueba Social Visual) -->
+    <section id="resultados" class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop mb-section-gap">
+        <div class="mb-12 flex justify-between items-end border-b border-outline-variant pb-6">
+            <h2 class="font-headline-lg text-headline-lg text-on-surface">Galería de Resultados</h2>
+            <span class="font-label-lg text-label-lg uppercase text-primary">Antes y Después</span>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+            <!-- Caso 1 -->
+            <div class="group border border-primary/20 p-2 hover:border-primary transition-all duration-300">
+                <div class="relative overflow-hidden aspect-square mb-4 rounded-lg">
+                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=600&auto=format&fit=crop" alt="Resultado de Tratamiento Facial Glow"/>
+                </div>
+                <p class="font-label-sm text-label-sm uppercase text-primary mb-1">Cuidado Facial</p>
+                <h4 class="font-headline-sm text-headline-sm text-on-surface">Limpieza Profunda & Tratamiento Glow</h4>
+            </div>
+            <!-- Caso 2 -->
+            <div class="group border border-primary/20 p-2 hover:border-primary transition-all duration-300">
+                <div class="relative overflow-hidden aspect-square mb-4 rounded-lg">
+                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?q=80&w=600&auto=format&fit=crop" alt="Resultado de Manicura Semi permanente"/>
+                </div>
+                <p class="font-label-sm text-label-sm uppercase text-primary mb-1">Manicura</p>
+                <h4 class="font-headline-sm text-headline-sm text-on-surface">Diseño Combinado & Esmaltado Semi permanente</h4>
+            </div>
+            <!-- Caso 3 -->
+            <div class="group border border-primary/20 p-2 hover:border-primary transition-all duration-300">
+                <div class="relative overflow-hidden aspect-square mb-4 rounded-lg">
+                    <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=600&auto=format&fit=crop" alt="Resultado de Tratamiento Corporal"/>
+                </div>
+                <p class="font-label-sm text-label-sm uppercase text-primary mb-1">Masaje & Bienestar</p>
+                <h4 class="font-headline-sm text-headline-sm text-on-surface">Drenaje Linfático & Tratamiento Corporal</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner Reservar Online / Tarjeta Regalo con estructura robusta e imágenes en el dom con fallback -->
+    <section class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop mb-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Tarjeta 1: Booksy Citas -->
+            <div class="relative h-[380px] w-full border border-primary p-2 overflow-hidden group">
+                <img src="daniela-estetica-reserva-online-booksy.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=600&auto=format&fit=crop'" class="absolute inset-0 w-full h-full object-cover" alt="Reserva Online Booksy"/>
+                <div class="absolute inset-0 bg-surface/85 backdrop-blur-sm z-10 transition-opacity duration-500 group-hover:bg-surface/80"></div>
+                <div class="relative z-20 h-full flex flex-col justify-center items-center text-center p-8">
+                    <span class="font-label-lg text-label-lg uppercase text-primary tracking-widest block mb-4">Agenda en un Clic</span>
+                    <h2 class="font-headline-md text-headline-md text-on-surface mb-6">Reserva tu Cita Online</h2>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-6 max-w-sm">
+                        Consulta disponibilidad en tiempo real en Booksy y agenda de forma cómoda.
+                    </p>
+                    <a href="https://booksy.com" target="_blank" class="px-8 py-3 bg-primary text-white font-label-lg text-label-lg uppercase hover:bg-primary-container hover:text-on-primary-container transition-all duration-300">
+                        Ver Horarios en Booksy
+                    </a>
+                </div>
+            </div>
+
+            <!-- Tarjeta 2: Regalo / Gift Cards -->
+            <div class="relative h-[380px] w-full border border-primary p-2 overflow-hidden group">
+                <img src="daniela-estetica-tarjeta-regalo-personalizada.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=80&w=600&auto=format&fit=crop'" class="absolute inset-0 w-full h-full object-cover" alt="Tarjeta de Regalo"/>
+                <div class="absolute inset-0 bg-surface/85 backdrop-blur-sm z-10 transition-opacity duration-500 group-hover:bg-surface/80"></div>
+                <div class="relative z-20 h-full flex flex-col justify-center items-center text-center p-8">
+                    <span class="font-label-lg text-label-lg uppercase text-primary tracking-widest block mb-4">Regala Bienestar</span>
+                    <h2 class="font-headline-md text-headline-md text-on-surface mb-6">Tarjetas Regalo Personalizadas</h2>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-6 max-w-sm">
+                        Sorprende a esa persona especial regalándole "su momento de bienestar" con nuestros vales personalizados.
+                    </p>
+                    <a href="#contacto" class="px-8 py-3 border border-primary text-on-surface font-label-lg text-label-lg uppercase hover:bg-primary hover:text-white transition-all duration-300">
+                        Consultar Opciones
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios (Prueba Social Escrita) -->
+    <section class="w-full bg-surface-container py-24 px-margin-mobile md:px-margin-desktop mb-section-gap">
+        <div class="max-w-[1440px] mx-auto text-center">
+            <span class="font-label-lg text-label-lg uppercase text-primary tracking-widest block mb-4">Testimonios</span>
+            <h2 class="font-headline-lg text-headline-lg text-on-surface mb-16">Lo que nuestras clientas opinan</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                <!-- Testimonio 1 -->
+                <div class="bg-surface p-8 border border-primary/20 text-left flex flex-col justify-between hover:border-primary transition-colors duration-300">
+                    <div>
+                        <div class="flex gap-1 mb-4">
+                            <span class="material-symbols-outlined text-[#D4AF37]">star</span>
+                            <span class="material-symbols-outlined text-[#D4AF37]">star</span>
+                            <span class="material-symbols-outlined text-[#D4AF37]">star</span>
+                            <span class="material-symbols-outlined text-[#D4AF37]">star</span>
+                            <span class="material-symbols-outlined text-[#D4AF37]">star</span>
+                        </div>
+                        <p class="font-body-lg text-body-lg text-on-surface-variant italic mb-6">
+                            "El mejor tratamiento facial que me he hecho. Daniela es súper profesional y el ambiente transmite una paz increíble."
+                        </p>
+                    </div>
+                    <p class="font-label-lg text-label-lg uppercase text-primary font-semibold">— María G.</p>
+                </div>
+                <!-- Testimonio 2 -->
+                <div class="bg-surface p-8 border border-primary/20 text-left flex flex-col justify-between hover:border-primary transition-colors duration-300">
+                    <div>
+                        <div class="flex gap-1 mb-4">
+                            <span class="material-symbols-outlined text-[#D4AF37]">star</span>
+                            <span class="material-symbols-outlined text-[#D4AF37]">star</span>
+                            <span class="material-symbols-outlined text-[#D4AF37]">star</span>
+                            <span class="material-symbols-outlined text-[#D4AF37]">star</span>
+                            <span class="material-symbols-outlined text-[#D4AF37]">star</span>
+                        </div>
+                        <p class="font-body-lg text-body-lg text-on-surface-variant italic mb-6">
+                            "Mis uñas quedan perfectas siempre y el asesoramiento nutricional me ha cambiado la energía por completo. ¡100% recomendada!"
+                        </p>
+                    </div>
+                    <p class="font-label-lg text-label-lg uppercase text-primary font-semibold">— Laura M.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto, Horarios y Ubicación -->
+    <section id="contacto" class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop mb-section-gap">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+            <!-- Información Izquierda -->
+            <div class="md:col-span-5 flex flex-col justify-center pr-0 md:pr-16">
+                <h2 class="font-headline-lg text-headline-lg text-on-surface mb-6">Agenda tu Momento</h2>
+                <p class="font-body-lg text-body-lg text-on-surface-variant mb-12">
+                    Estamos aquí para ayudarte a reconectar con tu bienestar. Si tienes alguna consulta o quieres agendar una cita especial, no dudes en escribirnos.
+                </p>
+                
+                <div class="space-y-6 mb-8">
+                    <!-- Horarios -->
+                    <div class="flex items-start space-x-4">
+                        <span class="material-symbols-outlined text-primary mt-1">schedule</span>
+                        <div>
+                            <p class="font-label-sm text-label-sm uppercase text-on-surface-variant mb-1">Horario de Apertura</p>
+                            <p class="font-body-md text-body-md text-on-surface">Lunes a Viernes: 09:00 a 20:00</p>
+                            <p class="font-body-md text-body-md text-on-surface">Sábados: 09:00 a 14:00</p>
+                        </div>
+                    </div>
+                    <!-- Ubicación -->
+                    <div class="flex items-start space-x-4">
+                        <span class="material-symbols-outlined text-primary mt-1">location_on</span>
+                        <div>
+                            <p class="font-label-sm text-label-sm uppercase text-on-surface-variant mb-1">Dirección</p>
+                            <p class="font-body-md text-body-md text-on-surface">Calle de Serrano, 45, Planta 1<br/>28001 Madrid, España</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botones de WhatsApp e Instagram -->
+                <div class="flex flex-wrap gap-4 mt-4">
+                    <a href="https://wa.me/34600000000" target="_blank" class="flex items-center gap-3 px-6 py-3 border border-primary text-on-surface hover:bg-primary hover:text-white transition-all duration-300 font-label-lg text-label-lg uppercase">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.517 2.266 2.27 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.863-9.864.002-2.637-1.023-5.116-2.887-6.98C16.582 1.895 14.1 1.867 12.008 1.867 6.57 1.867 2.146 6.29 2.143 11.733c-.001 1.69.448 3.34 1.302 4.793L2.49 20.824l4.157-1.67z"/>
+                        </svg>
+                        WhatsApp
+                    </a>
+                    <a href="https://instagram.com/kosurybeauty" target="_blank" class="flex items-center gap-3 px-6 py-3 border border-primary text-on-surface hover:bg-primary hover:text-white transition-all duration-300 font-label-lg text-label-lg uppercase">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+                        </svg>
+                        Instagram
+                    </a>
+                </div>
+            </div>
+
+            <!-- Formulario y Mapa Derecho -->
+            <div class="md:col-span-7 space-y-8">
+                <!-- Mapa de Google Maps -->
+                <div class="w-full h-80 border border-primary p-2 bg-surface">
+                    <iframe class="w-full h-full opacity-90 filter grayscale" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.2891969246194!2d-3.6874415846038473!3d40.42459027936412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422896570c1e65%3A0xc3456860361250b7!2sCalle%20de%20Serrano%2C%2045%2C%2028001%20Madrid!5e0!3m2!1ses!2ses!4v1685000000000!5m2!1ses!2ses" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <!-- Formulario de Contacto -->
+                <div class="bg-surface-container p-8 border border-primary">
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="font-label-sm text-label-sm uppercase text-on-surface-variant block mb-2" for="nombre">Nombre</label>
+                                <input class="w-full bg-transparent border-0 border-b border-on-surface focus:ring-0 focus:border-primary px-0 py-2 font-body-md text-on-surface placeholder-outline/55" id="nombre" placeholder="Tu nombre" type="text"/>
+                            </div>
+                            <div>
+                                <label class="font-label-sm text-label-sm uppercase text-on-surface-variant block mb-2" for="email">Correo Electrónico</label>
+                                <input class="w-full bg-transparent border-0 border-b border-on-surface focus:ring-0 focus:border-primary px-0 py-2 font-body-md text-on-surface placeholder-outline/55" id="email" placeholder="ejemplo@correo.com" type="email"/>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="font-label-sm text-label-sm uppercase text-on-surface-variant block mb-2" for="servicio">Servicio de Interés</label>
+                            <select class="w-full bg-transparent border-0 border-b border-on-surface focus:ring-0 focus:border-primary px-0 py-2 font-body-md text-on-surface" id="servicio">
+                                <option disabled="" selected="" value="">Selecciona un área de interés</option>
+                                <option value="manicura">Manicura & Pedicura</option>
+                                <option value="masajes">Masajes Corporales</option>
+                                <option value="facial">Cuidado Facial / Skincare</option>
+                                <option value="nutricion">Coach Nutricional</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="font-label-sm text-label-sm uppercase text-on-surface-variant block mb-2" for="mensaje">Mensaje (Opcional)</label>
+                            <textarea class="w-full bg-transparent border-0 border-b border-on-surface focus:ring-0 focus:border-primary px-0 py-2 font-body-md text-on-surface placeholder-outline/55 resize-none" id="mensaje" placeholder="¿Cómo podemos ayudarte?" rows="3"></textarea>
+                        </div>
+                        <button class="w-full py-4 border border-primary text-on-surface font-label-lg text-label-lg uppercase hover:bg-primary hover:text-white transition-colors duration-300" type="button">
+                            Enviar Consulta
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="w-full bg-surface border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center py-12 px-margin-desktop gap-8 max-w-[1440px] mx-auto">
+    <div class="font-headline-sm text-headline-sm text-primary uppercase tracking-widest">
+        Kosury Beauty
+    </div>
+    <div class="flex flex-wrap justify-center gap-8">
+        <a class="font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Política de Privacidad</a>
+        <a class="font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Términos del Servicio</a>
+        <a class="font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Sostenibilidad</a>
+    </div>
+    <div class="font-body-md text-body-md text-on-surface opacity-60">
+        © 2026 Kosury Beauty. Todos los derechos reservados.
+    </div>
+</footer>
+
+<!-- Botón Flotante de Booksy (Persistente) -->
+<a href="https://booksy.com" target="_blank" class="fixed bottom-8 right-8 z-50 flex items-center gap-2 px-6 py-4 bg-primary text-white font-label-lg text-label-lg uppercase shadow-lg hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 hover:scale-105 border border-transparent rounded-lg">
+    <span class="material-symbols-outlined">calendar_month</span>
+    <span>Reservar Cita</span>
+</a>
+
+<script>
+    // Transición de fondo del contenedor del nav al hacer scroll y efecto blur glass
+    const navContainer = document.getElementById('nav-container');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navContainer.classList.remove('bg-transparent');
+            navContainer.classList.add('bg-surface/85', 'backdrop-blur-md', 'border-b', 'border-outline-variant/20', 'shadow-sm');
+        } else {
+            navContainer.classList.add('bg-transparent');
+            navContainer.classList.remove('bg-surface/85', 'backdrop-blur-md', 'border-b', 'border-outline-variant/20', 'shadow-sm');
+        }
+    });
+
+    // Menú móvil
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+    function toggleMobileMenu() {
+        if (mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('flex');
+        } else {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('flex');
+        }
+    }
+
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    mobileMenuClose.addEventListener('click', toggleMobileMenu);
+
+    // Control de Tabs de Categorías en el Menú de Servicios con transiciones de fundido suaves
+    function switchCategory(category) {
+        const groups = document.querySelectorAll('.services-group');
+        
+        // Primero ocultamos con animación de opacidad todos los grupos
+        groups.forEach(group => {
+            group.classList.remove('opacity-100', 'scale-100');
+            group.classList.add('opacity-0', 'scale-95');
+            setTimeout(() => {
+                group.classList.add('hidden');
+            }, 250);
+        });
+        
+        // Después de que la animación de ocultar termine, mostramos el nuevo
+        setTimeout(() => {
+            const activeGroup = document.getElementById('cat-' + category);
+            if (activeGroup) {
+                activeGroup.classList.remove('hidden');
+                // Un pequeño delay para que el navegador registre la eliminación de 'hidden'
+                setTimeout(() => {
+                    activeGroup.classList.remove('opacity-0', 'scale-95');
+                    activeGroup.classList.add('opacity-100', 'scale-100');
+                }, 50);
+            }
+        }, 250);
+        
+        // Resetear estilos de todos los botones de tabs
+        const tabs = document.querySelectorAll('.category-tab');
+        tabs.forEach(tab => {
+            tab.classList.remove('text-primary', 'border-b-2', 'border-primary');
+            tab.classList.add('text-on-surface-variant', 'hover:text-primary');
+        });
+        
+        // Aplicar estilos activos al tab seleccionado
+        const activeTab = document.getElementById('tab-' + category);
+        if (activeTab) {
+            activeTab.classList.remove('text-on-surface-variant', 'hover:text-primary');
+            activeTab.classList.add('text-primary', 'border-b-2', 'border-primary');
+        }
+    }
+</script>
+
+</body>
+</html>
